@@ -1,27 +1,33 @@
-# HelmesFE
+# Helmes Frontend Homework Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.2.
+## Application
+This frontend application serves as part of a homework assignment.
 
-## Development server
+## Description
+The frontend handles communication between the user and the application. It presents a form for users to fill out, which includes various fields. Users can save the data to the database, and upon saving, they can refresh the form to update or edit their previously saved session.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Project Overview
+The project presents users with a form containing the following fields:
+- Name
+- Sectors (select box)
+- Agree to terms (checkbox)
 
-## Code scaffolding
+## Technologies Used
+- **Angular**: A TypeScript-based web application framework.
+- **Bootstrap**: A CSS framework for building responsive web applications.
+- **RxJS**: A library for reactive programming using Observables.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Starting the Project
 
-## Build
+### Setup Requirements
+Before starting the project, ensure the following:
+1. **Port Availability**: Ensure that port 8080 is available for running the Angular development server.
+2. **Backend Availability**: Confirm that the backend of the application is running and accessible to handle API calls.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Running the Project
+To run the project, follow these steps:
+1. Open the terminal of the frontend project.
+2. Run the command **npm install**
+3. Run the Angular CLI server using the following command:
+   **ng serve**
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

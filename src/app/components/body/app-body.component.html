@@ -1,0 +1,60 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h3 class="text-center mb-4">Please enter your name and select the sector you are currently involved in.</h3>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-4">
+          <label for="name">Name:</label>
+          <input type="text" class="form-control" id="name" name="name" [(ngModel)]="userData.name" required>
+          <div *ngIf="myForm.submitted && myForm.controls['name'].invalid" class="text-danger">
+            Name is required
+          </div>
+        </div>
+        <div class="form-group mb-4">
+          <label for="sectors">Sectors:</label>
+          <select multiple class="form-control" id="sectors" name="sectors" [(ngModel)]="userData.userSectors" required>
+            <ng-container *ngFor="let sector of sectors">
+              <option [value]="sector.id" [selected]="userData.userSectors?.includes(sector.id)"
+                      [ngClass]="{ 'bold-text': sector.children && sector.children.length > 0 }">{{ sector.name }}
+              </option>
+              <ng-container *ngIf="sector.children && sector.children.length > 0">
+                <ng-container
+                  *ngTemplateOutlet="recursiveSectors; context:{ $implicit: sector.children, depth: 1 }"></ng-container>
+              </ng-container>
+            </ng-container>
+            <ng-template #recursiveSectors let-children let-depth="depth">
+              <ng-container *ngFor="let child of children">
+                <option [value]="child.id" [selected]="userData.userSectors?.includes(child.id)"
+                        [ngClass]="{ 'bold-text': child.children && child.children.length > 0 }"
+                        [style.marginLeft.px]="depth * 20">{{ child.name }}
+                </option>
+                <ng-container *ngIf="child.children && child.children.length > 0">
+                  <ng-container
+                    *ngTemplateOutlet="recursiveSectors; context:{ $implicit: child.children, depth: depth + 1 }"></ng-container>
+                </ng-container>
+              </ng-container>
+            </ng-template>
+          </select>
+          <div *ngIf="myForm.submitted && myForm.controls['sectors'].invalid" class="text-danger">
+            Sectors are required
+          </div>
+        </div>
+        <div class="form-check mb-4">
+          <input type="checkbox" class="form-check-input" id="agree" name="agree" [(ngModel)]="userData.agreeToTerms"
+                 required>
+          <label class="form-check-label" for="agree">Agree to terms and conditions</label>
+          <div *ngIf="myForm.submitted && myForm.controls['agree'].invalid" class="text-danger">
+            You must agree to the terms and conditions
+          </div>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        <div *ngIf="!submitted && myForm.submitted" class="alert alert-success mt-3" role="alert">
+          Data stored in the database successfully.
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

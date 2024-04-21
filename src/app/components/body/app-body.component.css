@@ -1,0 +1,20 @@
+.btn-primary {
+  background-color: #0047ab;
+  border-color: #1e90ff;
+}
+
+.btn-secondary {
+  background-color: #28a745;
+  border-color: #28a745;
+
+}
+
+.btn-group .btn {
+  margin-right: 10px;
+  border-radius: 10px 10px 10px 10px;
+
+}
+
+.bold-text {
+  font-weight: bold;
+}
